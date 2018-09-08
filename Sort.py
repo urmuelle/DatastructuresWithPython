@@ -3,6 +3,7 @@ from random import *
 import time, _thread
 import threading
 
+# Class visualizing sorting
 class SorterApp:
     def __init__(self, parent):
         self.myParent = parent
