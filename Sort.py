@@ -24,14 +24,14 @@ class SorterApp:
         self.running = True
         self.values = list(range(100))
         shuffle(self.values)
-        newthread = threading.Thread(target=self.bubbleSort)
+        newthread = threading.Thread(target=self.shellSort)
         newthread.start()
         self.button.config(text="Stop", command=self._resetbutton)
 
     def drawValues(self):
         self.canvas.delete('all')
         for i in range(100):
-            self.canvas.create_rectangle(2*i, 2*self.values[i], 2*i+3, 2*self.values[i]+3, width=1, fill='black')
+            self.canvas.create_rectangle(2*i, 200-2*self.values[i], 2*i+3, 200-2*self.values[i]+3, width=1, fill='black')
 
     def update(self):
         self.drawValues()
@@ -57,9 +57,34 @@ class SorterApp:
                 if self.values[j-1] > self.values[j]:
                     t = self.values[j-1]
                     self.values[j-1] = self.values[j]
-                    self.values[j] = t            
-                    time.sleep(0.01)
+                    self.values[j] = t
+                    time.sleep(0.005)
         self._resetbutton()
+
+    def insertionSort(self):
+        N = len(self.values)
+        for i in range(1, N):
+            v = self.values[i]
+            j = i
+            while ((self.values[j-1] > v) and (j > 0)):
+                self.values[j] = self.values[j-1]
+                time.sleep(0.005)
+                j = j-1
+            self.values[j] = v
+        self._resetbutton()
+
+    def shellSort(self):
+        N = len(self.values)
+        for k in range(N):
+            h = self.values[k]
+            for i in range (h, N):
+                t = self.values[i]
+                j = i
+                while ((j >= h) and (self.values[j-h] > t)):
+                    self.values[j] = self.values[j-h]
+                    j = j - h
+                self.values[j] = t
+        self._resetbutton()          
 
 root = Tk()
 app = SorterApp(root)
