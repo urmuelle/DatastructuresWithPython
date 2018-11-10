@@ -62,6 +62,7 @@ def tokenize (string):
 
 mstr = '(5*(((9+8)*(4*6))+70))'
 print('converting string ' + mstr +':')
+
 def infixToPostfix(tokenlist):
     reverseTokenlist = []
     for token in tokenlist:    
@@ -100,4 +101,3 @@ for token in reverseTokenlist:
 s.printStack()
 root = s.pop()
 root.printTree()
-
