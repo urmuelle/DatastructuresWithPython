@@ -34,7 +34,7 @@ class SorterApp:
         self.running = True
         self.values = list(range(100))
         shuffle(self.values)
-        newthread = threading.Thread(target=self.shellSort)
+        newthread = threading.Thread(target=self.insertionSort)
         newthread.start()
         self.button.config(text="Stop", command=self._resetbutton)
 

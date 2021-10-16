@@ -43,20 +43,20 @@ class SorterApp:
         self.myParent.after(10, self.update)    
 
     def quicksort(self):
-        self.quickSortHelper(0,len(self.values)-1)
+        self.quickSortHelper(0, len(self.values) - 1)
         self._resetbutton()
 
     def quickSortHelper(self, first, last):
-        if first<last:
-            splitpoint = self.partition(first,last)
+        if first < last:
+            splitpoint = self.partition(first, last)
 
-            self.quickSortHelper(first,splitpoint-1)
-            self.quickSortHelper(splitpoint+1,last)
+            self.quickSortHelper(first, splitpoint - 1)
+            self.quickSortHelper(splitpoint + 1, last)
 
     def partition(self, first, last):
         pivotvalue = self.values[first]
 
-        leftmark = first+1
+        leftmark = first + 1
         rightmark = last
 
         done = False
@@ -66,7 +66,7 @@ class SorterApp:
                 leftmark = leftmark + 1
 
             while self.values[rightmark] >= pivotvalue and rightmark >= leftmark:
-                rightmark = rightmark -1
+                rightmark = rightmark - 1
 
             if rightmark < leftmark:
                 done = True
